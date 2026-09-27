@@ -1,0 +1,268 @@
+<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+            < meta charset="UTF-8">
+            < meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Scifly-Curious Minds</title>
+</--Bubbly Rounded Font from Google Fonts -->
+< link href="https://googleapis.com" rel=""stylesheet">
+<style>
+    /* 1. THE BUBBLY AND PASTEL DESIGN (CSS) */
+    body {
+        background-color: #e3f2fd; /* Soft Pastel Blue */
+        font-family: 'Quicksand', sans-serif;
+        color: #3d5afe; /* Deep Blue Text for readablity */
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    header {
+        text-align: center;
+        padding: 30px;
+        background: #ffffff;
+        width: 100%;
+        max-width: 800px;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+        box-shadow: 0 8px 24px rgbs(187, 222, 251, 0.5);
+    }
+    hi {
+        font-size: 3rem;
+        margin: 0;
+        color: #1e88e5;
+        text-shadow: 2px 2px #bbdefb;
+    }
+    .subtitle {
+        font-size: 1.1rem;
+        color: #5c6bc0;
+        margin-top: 5px;
+    }
+    /* Tabs Navigation */
+    nav {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        margin-top: 20px;
+        flex-wrap: wrap;
+    }
+    .tab-btn {
+        background: #e3f2fd;
+        border: 2px solid #90caf9;
+        padding: 10px 20px;
+        border-radius: 20px; /* Bubbly shape */
+        font-family: 'Quicksand', sans-serif;
+        font-weight: 700;
+        color:#1e88e5;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+    .tab-btn.active, .tab-btn:hover {
+        background: #1e88e5;
+        color: white;
+        transform: scale(1.05);
+    }
+    /* Main Content Container */
+    main {
+        width: 90%;
+        max-width: 800px;
+        margin: 30px 0;
+    }
+    .page-content {
+        display: none;
+        background: white;
+        padding: 30px;
+        border-radius: 30px;
+        box-shadow: 0 8px 24px rgba(187,222,251,0.3);
+    }
+    .page-content.active {
+        display: block;
+        animation: popIn 0.3s ease;
+    }
+    @keyframes popIn {
+        0% { transform: scale(0.95); opacity: 0; }
+        100% { transfor: scale(1); opacity: 1; }
+    }
+    /* Cards for Questions */
+    .q-card {
+        background: #f5fafd;
+        border: 2px solid #e3f2fd;
+        padding: 20px;
+        border-radius: 20px;
+        margin-bottom: 20px;
+        position: relative;
+    }
+    .star-box {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: white;
+        border: 2px solid #ffe082;
+        padding: 5px 12px;
+        border-radius: 15px;
+        cursor: pointer;
+        user-select: none;
+        font-weight: bold;
+    }
+    .star-box.starred {
+        background: #fff8e1;
+        color: #ffb300;
+    }
+    /* Cute Input Boxes */
+    input, textarea {
+        width: 100%;
+        padding: 15px;
+        border: 2px solid #90caf9;
+        border-radius: 20px;
+        box-sizing: border-box;
+        font-family: 'Quicksand', sans-serif;
+        font-size: 1rem;
+        margin-bottom: 15px;
+        outline: none;
+    }
+    input:focus, textarea:focus {
+        border-color: #1e88e5;
+    }
+    .submit-btn:hover {
+        transform: translateY(-2px);
+        background: #ff5252;
+    }
+    .source-tag {
+        display: inline-block;
+        background: #e8eaf6;
+        color: #3f51b5;
+        padding: 3px 10px;
+        border-radius: 10px;
+        font-size: 0.85rem;
+        margin-top: 10px;
+    }
+    </style>
+    </head>
+    <body>
+        <header>
+            <h1>Scifly 🛸</h1>
+            <p class="subtitle">The bubbly corner for big, curious questions!</p>
+        <!--2. THE TABS (NAVIGATION) -->
+        <nav>
+            <button class="tab-btn active" onclick="switchTab('intro')">Introduction 🌟</button>
+            <button class="tab-btn" onclick="switchTab('questions')">Questions 🤔</button>
+            <button class="tab-btn" onclick="switchTab('unsolved')">Unsolved 🧐</button>
+            <button class="tab-btn" onclick="switchTab('details')">Details ⚙️</button>
+            <button class="tab-btn" onclick="switchTab('policy')">Safety Policy 🩵</bu
+         </nav>
+    </header>
+    <main>
+        <!-- INTRODUCTION TAB -->
+        <div id="intro" class="page-content active">
+            <h2>Welcome to Scifly! 👋</h2>
+            <p>Have you ever wondered about something completely random, like why the sky is blue and how birds navigate across countries?</p>
+            <p>Scifly is a friendly, completely safe digital space where you can share your curiosity and learn from others!</p>
+        </div>
+        <!-- QUESTIONS TAB -->
+         <div id="questions" class="page-content">
+            <h2>Curious Questions & Answers 💡</h2>
+            <div id="custom-questions">
+                <!-- Sample Question Box -->
+                 <div class="q-card">
+                    <div class="star-box" onclick="toggleStar(this)">⭐</div>
+                    <h3>❓Why are clouds white and not other colours?</h3>
+                    <p><strong>Answer:</strong>Clouds are white because the water droplets and ice crystals inside them scatter all wavelengths of sunlight equally, creating a white appearance.</p>
+                    <span class="source-tag">Source: NASA Cimate Kids</span>
+                 </div>
+            </div>
+         <!-- Add your Curious Question! Form -->
+          <div class="form-container" style="margin-top: 30px; border-top: 1px dashed #cccccc; padding-top: 2opx;">
+            <h3>Add your curious Question!</h3>
+            <input type="text" id="user-q" placeholder="Type your 'why' or 'how' question here...">
+            <input type="text" id="user-a" placeholder="Know the answer? Put it here(optional)...">
+            <input type="text" id="user-s" placeholder="Source of information or book name (optional)...">
+            <button class="submit-btn" onclick="addQuestion()">Post to Scifly</button>
+        </div>
+    </div>
+    <!-- UNSOLVED TAB -->
+     <div id="unsolved" class="page-content">
+        <h2>Unsolved Mysteries</h2>
+        <p>These questions haven't been answered yet. Can you help solve them?</p>
+        <div class="q-card">
+            <div class="star-box" onclick="toggleStar(this)">⭐</div>
+            <h3>How do whales sleep without drowning in the ocean?</h3>
+            <p>No answers yet! Be the first to tell your teacher or friends, or write down your theories!</p>
+        </div>
+    </div>
+    <!-- DETAILS TAB -->
+     <div id="policy" class="page-content">
+        <h2>About Scifly !</h2>
+        <p><strong>Version:</strong>1.0 (Prototype Edition)</p>
+        <p><strong>Designed By:</strong>An awesome 8th Grade Creator!</p>
+        <p>This layout runs safely entirely inside your browser window</p>
+    </div>
+    <!-- POLICY TAB -->
+     <div id="policy" class="page-content">
+        <h2>Safety Policy</h2>
+        <p>To keep Scifly a happy place, we follow three golden rules:</p>
+        <ul>
+            <li><strong>No personal data:</strong>Never post last names, phone numbers or anything personal</li>
+            <li><strong>Be kind:</strong>Only helpful, friendly answers are appreciated</li>
+            <li><strong>Stay Curious:</strong>No question is too silly!</li>
+        </ul>
+    </div>
+</main>
+<!-- 3. INTERACTIVE ACTIONS (JAVASCRIPT) -->
+ <script>
+    // Tab switching function
+    function switchTab(tabId) {
+        document.querySelectorAll('.page-content').forEach(page => page.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+        if (event && event.currentTarget) {
+            event.currentTarget.classList.add('active');
+        }
+    }
+    // Bubbly star rating sytem
+    function toggleStar(element) {
+        const countSpan = element.querySelector('.count');
+        let currentCount = parseInt(countSpan.innerText);
+        if (element.classList.contains('starred')) {
+            element.classList.remove('starred');
+            countSpan.innerText = currentCount - 1;
+        } else {
+            element.classList.add('starred');
+            countSpan.innerText = currentCount + 1;
+        }
+    }
+    // Add a brand new question dynamically
+    function addQuestion() {
+        const qText = document.getElementById('user-q').value;
+        const aText = document.getElementById('user-a').value || "No answers";
+        const sText = document.getElementById('user-s').value;
+        if(!qText){
+            alert("Please type a question first! 😀")
+            return;
+        }
+        const newCard = document.createElement('div');
+        newCard.className = 'q-card';
+        let sourceHTML = `sText ? <br><span class="source-tag">🔗 Source: ${sText}</span>`;
+        newCard.innerHTML = `<div class="star-box" onclick="toggleStar(this)">⭐ <span class="count">0</span></div> 
+        <h3>  ${qText}</h3> <p><strong>Answer:</strong> ${aText}</p> ${sourceHTML}`;
+        document.getElementById('custom-questions').prepend(newCard);
+        //Clear the boxes for the next input
+        document.getElementById('user-q').value ='';
+        document.getElementById('user-a').value ='';
+        document.getElementById('user-s').value ='';
+    }
+    
+
+
+
+
+
+
+
+
+>
+    
+
+
+    
